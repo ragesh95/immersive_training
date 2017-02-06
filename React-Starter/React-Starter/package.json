@@ -1,0 +1,21 @@
+{
+  "name": "multirows",
+  "version": "1.0.0",
+  "description": "",
+  "main": "articles.js",
+  "scripts": {
+    "start": "nodemon"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

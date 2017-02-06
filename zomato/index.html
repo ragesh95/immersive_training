@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Foodies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+  <script src="js/script.js"></script>
+  <script id="template" type="text/javascript">
+  <div class="column">
+    <div class="ui card style">
+      <div class="image">
+        <img src=${restaurant.featured_image} alt="">
+      </div>
+      <div class="content">
+        <a href=${restaurant.url} class="header">${restaurant.name}</a>
+        <div class="meta">
+          <span class="date">
+
+          </span>
+        </div>
+      </div>
+      <div class="description" id="resDescription1">
+        ${restaurant.location.address}
+      </div>
+      <div class="extra content">
+        <a href="" ><i class="user icon"></i><span>${restaurant.user_rating.aggregate_rating}/${restaurant.user_rating.votes}</span></a>
+      </div>
+    </div>
+  </div>
+  </script>
+</head>
+<body>
+  <div class="ui container">
+    <div class="ui one column center aligned grid">
+      <div class="column">
+        <div class="ui action input">
+          <input type="text" placeholder="Search city" id="citySearch">
+          <div class="ui button" onclick="getCityId()">Search</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui container">
+    <div class="ui three column grid" id="results">
+    </div>
+  </div>
+</body>
+</html>
