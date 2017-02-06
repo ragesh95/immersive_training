@@ -1,0 +1,5 @@
+JS UI library
+based on component based architechture
+Components are a heirarichal free of nodes where each node have parent child relationship
+can be used to create Single Page Application
+very fast because of virtual DOM

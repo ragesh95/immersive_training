@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
  devtool: 'cheap-module-eval-source-map',
- /*entry: {
+ entry: {
    app: [
    'webpack/hot/dev-server',
     'webpack-hot-middleware/client?reload=true',
@@ -15,7 +15,7 @@ module.exports = {
    publicPath: "/dist/",
    filename: "bundle.js"
  },
- 
+
  module: {
      loaders: [{
                test: /\.jsx$/,
@@ -32,11 +32,11 @@ module.exports = {
  watch:true,
  resolve: {
    extensions: ['', '.js', '.jsx', '/index.js', '/index.jsx']
- },*/
+ },
  plugins: [
        new webpack.optimize.OccurenceOrderPlugin(),
        new webpack.HotModuleReplacementPlugin(),
        new webpack.NoErrorsPlugin(),
-      // new HtmlWebpackPlugin({ template: path.resolve('./webclient/index.html') })
+      new HtmlWebpackPlugin({ template: path.resolve('./webclient/index.html') })
       ]
 };
