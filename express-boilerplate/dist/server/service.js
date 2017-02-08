@@ -19,6 +19,7 @@ function setupStaticRoutes(app) {
 function setupRestRoutes(app) {
   console.log('Inside service setupRestRoutes');
   app.use('/users', require(path.join(__dirname, './users')));
+  app.use('/restaurant', require(path.join(__dirname, './restaurant')));
   //  MOUNT YOUR REST ROUTE HERE
   //  Eg:
 
@@ -76,9 +77,20 @@ function setupWebpack(app) {
 
     app.use(webpackHotMiddleware(webpackCompiler));
     app.use(webpackDevMiddleware(webpackCompiler, {
-      noInfo: true,
-      publicPath: webpackConfig.output.publicPath
-    }));
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath,
+  stats: {
+      colors: true
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
+  }
+}));
+    // app.use(webpackDevMiddleware(webpackCompiler, {
+    //   noInfo: true,
+    //   publicPath: webpackConfig.output.publicPath
+    // }));
   }
   return app;
 }
