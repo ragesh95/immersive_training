@@ -1,95 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var Child = require("./components/sample/index.jsx");
-
-function formatName(user, img) {
-	if(user) {
-		return user.firstName+" "+user.lastName;
-	}
-	return "user";
-}
-
-function setWelcomeImage(img) {
-	if(img)
-		return img;
-}
-
-function getDate(){
-	const date = (<h1>{new Date().toLocaleTimeString()}</h1>);
-	ReactDOM.render(
-	  date,
-	  document.getElementById('dateapp')
-	);
-}
-
-const user = {
-	firstName : "Rageshwaran",
-	lastName : "R"
-};
-
-const welcomeUser = (<div><img src={setWelcomeImage("http://www.w3schools.com/css/trolltunga.jpg")}/><h1 className="greetings">Welcome {formatName(user)} </h1></div>);
-
-function WelcomeReact(props){
-	return (
-		<h1>Welcome {props.name}</h1>
-	);
-}
+var Child1 = require('./components/zomato/restaurants.jsx');
+var Favourites = require('./components/zomato/favourites.jsx');
+var Menu = require("./components/zomato/menu.jsx");
 
 class MainComponent extends React.Component {
-
-	constructor () {
+	constructor() {
 		super();
-		this.state = {name : "hai", city : ""};
-		this.handleClick = this.handleClick.bind(this);
-		this.change = this.change.bind(this);
+		this.state = { menu : ['Home','Favourites','Logout'], active : <Child1 />};
 	}
 
-	change(e){
-		this.setState({city : e.target.value});
-	}
-
-	handleClick(){
-		if(this.state.name === "hai"){
-			this.setState({name : "hello"});
+	onMenuChange(x){
+		console.log(x);
+		if(x === "home"){
+			this.setState({
+				active : <Child1 />
+			});
 		}
-		else{
-			this.setState({name : "hai"});
+		else if(x === "favourites") {
+			this.setState({
+				active : <Favourites />
+			});
 		}
 	}
 
-	handleClick(city){
-			this.setState({name : city});
-	}
-
-	render () {
+	render() {
 		return (
 			<div>
-				<input type="text" onChange={this.change}/>
-				<button onClick={this.handleClick}>Make fun</button>
-				<WelcomeReact name="raki"/>
-				<WelcomeReact name="Sounderr"/>
-				<h1>Hello From React,{this.props.name}</h1>
-				<Child.Child.Child myPropsDta={this.state.name} handleClick = {this.handleClick.bind(this, this.state.city)}/>
-				<Child.Child.GrandChild />
+				<Menu menu = {this.state.menu} menuChange = {this.onMenuChange.bind(this)}/>
+				{this.state.active}
 			</div>
 		);
 	}
 }
 
 ReactDOM.render(
-	<MainComponent name="Rak"/>,document.getElementById('mountapp')
+	<MainComponent />,
+	document.getElementById('content')
 );
-ReactDOM.render(
-	<Child.Child.GrandChild/>,document.getElementById('childapp')
-);
-ReactDOM.render(
-  welcomeUser,
-  document.getElementById('root')
-);
-ReactDOM.render(
-  welcomeUser,
-  document.getElementById('check')
-);
-
-setInterval(getDate, 1000);

@@ -75,7 +75,7 @@ router.get('/getrestaurant', function(req, res) {
       res.send("Error:"+err);
     }
     else{
-      res.send(docs+"dsfsdf");
+      res.send(docs);
     }
   });
 });

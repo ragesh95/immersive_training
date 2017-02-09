@@ -7,12 +7,11 @@ function getCityId(){
       var locations = json.location_suggestions;
       if(locations.length==1){
         console.log(locations[0]);
-        getRestaurants(locations[0].id);
+        getData(locations[0].id);
       }
       else if(locations.length==0){
         console.log("wrong search");
       }
-      getRestaurants(this.responseText);
     }
   };
   xhttp.open("GET", "https://developers.zomato.com/api/v2.1/cities?q="+$("#citySearch").val()+"&apikey=fbddf09231cc8477564b717362377898", true);

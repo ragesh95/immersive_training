@@ -2,16 +2,38 @@
 <html>
 
 <head>
-    <title>Zynla</title>
+    <title>Foodies</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"></link>
     <style>
       .greetings {
         color: green;
       }
+      .search {
+        margin-top: 50px !important;
+      }
+      .left {
+        padding-right: 20px !important;
+      }
+      .right {
+        padding-left: 20px !important;
+      }
+      .image {
+        height: 300px;
+      }
+      .description {
+        height: 50px;
+      }
+      .meta {
+        height: 30px;
+      }
     </style>
 </head>
 
 <body>
+  <div id="menu"></div>
+  <div id="content"></div>
+  <div hidden="hidden">
     <div id="dateapp"></div>
     <div id="root"></div>
     <br/>
@@ -24,6 +46,7 @@
     <br/>
     <div id="mountapp"></div>
     <div id="childapp"></div>
+  </div>
 </body>
 <script src="./dist/bundle.js" charset="utf-8"></script>
 
