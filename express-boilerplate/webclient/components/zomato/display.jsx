@@ -21,7 +21,7 @@ class GrandChild2 extends React.Component {
         if(fav === "fav") {
           return (
             <Grid.Column centered>
-              <Restaurant id={obj.resId} image={obj.resImage} name={obj.resName} cuisine={obj.resUrl} description={obj.resDescription} rating={obj.resReview} ratingCounts={obj.resReviewCount} delete = {delete1}/>
+              <Restaurant id={obj.resId} image={obj.resImage} name={obj.resName} cuisine={obj.resUrl} description={obj.resDescription} rating={obj.resReview} ratingCounts={obj.resReviewCount} delete = {delete1} fav = "fav"/>
             </Grid.Column>
           );
         }

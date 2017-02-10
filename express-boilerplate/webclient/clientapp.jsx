@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+var {browserHistory, Route, Router, IndexRoute} = require('react-router');
 var Child1 = require('./components/zomato/restaurants.jsx');
 var Favourites = require('./components/zomato/favourites.jsx');
 var Menu = require("./components/zomato/menu.jsx");
@@ -29,13 +30,18 @@ class MainComponent extends React.Component {
 		return (
 			<div>
 				<Menu menu = {this.state.menu} menuChange = {this.onMenuChange.bind(this)}/>
-				{this.state.active}
+				{this.props.children}
 			</div>
 		);
 	}
 }
 
 ReactDOM.render(
-	<MainComponent />,
-	document.getElementById('content')
+	<Router history={browserHistory}>
+                <Route path="/" component={MainComponent}>
+                <IndexRoute component={Child1}/>
+								<Route path="/home" component={Child1}/>
+                <Route path="/favourites" component={Favourites}/>
+							</Route>
+  </Router>,document.getElementById('menu')
 );

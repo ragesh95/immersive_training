@@ -6,7 +6,7 @@ class RestaurantBox extends React.Component {
 
   constructor() {
     super();
-    this.state = {favourite : "thumbs outline up"};
+    this.state = {favourite : "thumbs outline up", comment : "", updateBox : ""};
   }
 
   changeState(){
@@ -50,6 +50,24 @@ class RestaurantBox extends React.Component {
     this.setState({favourite : "thumbs up"});
   }
 
+  updateComment(e) {
+    console.log("comesto update");
+    $.ajax({
+     url:"http://localhost:8080/restaurant/updaterestaurant",
+     type:'PUT',
+     data : {"resId":this.props.id, "resComments":e.target.value},
+    success: function(datas)
+    {
+      console.log(datas);
+    }.bind(this),
+    error: function(err)
+    {
+      console.log('error occurred on AJAX');
+      console.log(err);
+    }.bind(this)
+   });
+  }
+
   getRestaurant() {
     var id = this.props.id;
     var changeFavourite = this.changeFav.bind(this);
@@ -65,6 +83,9 @@ class RestaurantBox extends React.Component {
         if(data.resId == id){
           console.log("comes");
           changeFavourite(1);
+          this.setState({
+            comment : data.resComments
+          });
         }
       }
     }.bind(this),
@@ -76,12 +97,16 @@ class RestaurantBox extends React.Component {
    });
   }
 
+  componentDidMount() {
+    this.getRestaurant();
+  }
+
   addRestaurant() {
     $.ajax({
 
      url:"http://localhost:8080/restaurant/addrestaurant",
      type:'POST',
-     data: {"resId":this.props.id, "resName":this.props.name, "resDescription":this.props.description, "resReview":this.props.rating, "resReviewCount":this.props.ratingCounts, "resImage":this.props.image, "resUrl":this.props.cuisine, "resComments":"Comments..."},
+     data: {"resId":this.props.id, "resName":this.props.name, "resDescription":this.props.description, "resReview":this.props.rating, "resReviewCount":this.props.ratingCounts, "resImage":this.props.image, "resUrl":this.props.cuisine, "resComments":""},
     success: function(datas)
     {
       console.log(datas);
@@ -94,12 +119,21 @@ class RestaurantBox extends React.Component {
    });
   }
 
+  updateBox(e) {
+    this.setState({
+      updateBox : e.target.value
+    });
+  }
+
   render() {
-    const update = (
-      <div>
-        <Input action='Comment...' placeholder='Search...' />
-      </div>
-    );
+    var update = "";
+    if(this.props.fav === "fav") {
+      update = (
+        <div>
+          <Input action='Update' placeholder={this.state.comment} className='update' onChange={this.updateComment.bind(this)}/>
+        </div>
+      );
+    }
     const extra = (
       <div>
         <span className="left">
