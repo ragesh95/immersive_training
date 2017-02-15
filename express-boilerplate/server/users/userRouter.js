@@ -2,6 +2,8 @@
 const logger = require('./../../applogger');
 const router = require('express').Router();
 const user = require('./userEntity');
+const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
 //const userCtrl = require('./userController');
 
 router.post('/add', function(req, res) {
@@ -48,6 +50,19 @@ router.post('/findAll', function(req, res) {
         res.send(docs);
       }
     });
+});
+
+router.post('/login',passport.authenticate('local', {
+      failureFlash: 'Invalid Username and Password',
+      successFlash: "Welcome to foodie App"
+   }),function(req, res) {
+         res.json({responseText:'authenticated'});
+      });
+
+router.get('/logout', function(req, res){
+  console.log('Session deleted');
+  req.session.destroy();
+  res.send({redirect: '/'});
 });
 
 module.exports = router;

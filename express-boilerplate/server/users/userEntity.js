@@ -2,7 +2,7 @@ const mong = require('mongoose');
 // const connection = require('../../config');
 
 var schema = new mong.Schema({
-  userName : String,
+  username : String,
   password : String
 });
 

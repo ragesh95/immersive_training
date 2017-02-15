@@ -5,6 +5,7 @@ var {browserHistory, Route, Router, IndexRoute} = require('react-router');
 var Child1 = require('./components/zomato/restaurants.jsx');
 var Favourites = require('./components/zomato/favourites.jsx');
 var Menu = require("./components/zomato/menu.jsx");
+var Login = require("./components/login.jsx");
 
 class MainComponent extends React.Component {
 	constructor() {
@@ -38,10 +39,10 @@ class MainComponent extends React.Component {
 
 ReactDOM.render(
 	<Router history={browserHistory}>
-                <Route path="/" component={MainComponent}>
-                <IndexRoute component={Child1}/>
-								<Route path="/home" component={Child1}/>
-                <Route path="/favourites" component={Favourites}/>
-							</Route>
+                <Route path="/" component={Login}/>
+                <Route component={MainComponent}>
+									<Route path="/home" component={Child1}/>
+                	<Route path="/favourites" component={Favourites}/>
+								</Route>
   </Router>,document.getElementById('menu')
 );

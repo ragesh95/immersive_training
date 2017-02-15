@@ -13,6 +13,7 @@ class GrandChild2 extends React.Component {
     var columns=[];
     var resturants = "";
     var fav = this.props.fav;
+    var temp = this.props.obj;
     var delete1 = this.props.delete;
     console.log("outside"+this.props.obj);
     if(typeof this.props.obj === "object"){
@@ -21,7 +22,7 @@ class GrandChild2 extends React.Component {
         if(fav === "fav") {
           return (
             <Grid.Column centered>
-              <Restaurant id={obj.resId} image={obj.resImage} name={obj.resName} cuisine={obj.resUrl} description={obj.resDescription} rating={obj.resReview} ratingCounts={obj.resReviewCount} delete = {delete1} fav = "fav"/>
+              <Restaurant id={obj.resId} image={obj.resImage} name={obj.resName} cuisine={obj.resUrl} description={obj.resDescription} rating={obj.resReview} ratingCounts={obj.resReviewCount} delete = {delete1} fav = "fav" comments = {obj.resComments}/>
             </Grid.Column>
           );
         }

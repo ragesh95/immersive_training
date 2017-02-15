@@ -24,10 +24,12 @@ class RestaurantBox extends React.Component {
       this.setState({favourite : "thumbs outline up"});
       this.deleteRestaurant();
     }
-    console.log(this.state.id);
   }
 
   deleteRestaurant() {
+    this.setState({
+      comments : ""
+    });
     this.props.delete(this.props.id);
     $.ajax({
 
@@ -66,6 +68,9 @@ class RestaurantBox extends React.Component {
       console.log(err);
     }.bind(this)
    });
+   this.setState({
+     comment : ''
+   });
   }
 
   getRestaurant() {
@@ -98,7 +103,26 @@ class RestaurantBox extends React.Component {
   }
 
   componentDidMount() {
+    // if(this.props.comments.length>=1) {
+    //   this.setState({
+    //     comment : this.props.comments
+    //   });
+    // }
+    // this.changeFavourite(1);
     this.getRestaurant();
+  }
+
+  checkRestaurant() {
+    var data = this.props.allObj;
+    for (var i = 0; i < data.length; i++) {
+
+        console.log("comes");
+      if(data[i].resId == this.props.id){
+        this.setState({
+          comment : data[i].resComments
+        });
+      }
+    }
   }
 
   addRestaurant() {
@@ -130,7 +154,7 @@ class RestaurantBox extends React.Component {
     if(this.props.fav === "fav") {
       update = (
         <div>
-          <Input action='Update' placeholder={this.state.comment} className='update' onChange={this.updateComment.bind(this)}/>
+          <Input action='Update' placeholder={this.props.comments} className='update' onChange={this.updateComment.bind(this)}/>
         </div>
       );
     }
