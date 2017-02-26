@@ -1,0 +1,232 @@
+<html>
+
+<head>
+
+<script type="text/javascript">
+
+var a="a";
+var op="";
+var dis="";
+function calc(n){
+ var numval=document.getElementById("numval");
+ if(n=="*"){
+  dis+="*";
+  op="*";
+  numval.value=dis;
+ }
+ if(n=="+"){
+  dis+="+";
+  op="+";
+  numval.value=dis;
+ }
+ if(n=="-"){
+  dis+="-";
+  op="-";
+  numval.value=dis;
+ }
+ if(n=="/"){
+  dis+="/";
+  op="/";
+  numval.value=dis;
+ }
+ if(n=="C"){
+  dis="";
+  a="a";
+  op="";
+  numval.value=dis;
+ }
+ if(n==1){
+  dis+="1";
+  if(a=="a")
+   a=1;
+  else{
+   a=getCalc(a,1);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==2){
+  dis+="2";
+  if(a=="a")
+   a=2;
+  else{
+   a=getCalc(a,2);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==3){
+  dis+="3";
+  if(a=="a")
+   a=3;
+  else{
+   a=getCalc(a,3);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==4){
+  dis+="4";
+  if(a=="a")
+   a=4;
+  else{
+   a=getCalc(a,4);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==5){
+  dis+="5";
+  if(a=="a")
+   a=5;
+  else{
+   a=getCalc(a,5);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==6){
+  dis+="6";
+  if(a=="a")
+   a=6;
+  else{
+   a=getCalc(a,6);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==7){
+  dis+="7";
+  if(a=="a")
+   a=7;
+  else{
+   a=getCalc(a,7);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==8){
+  dis+="8";
+  if(a=="a")
+   a=8;
+  else{
+   a=getCalc(a,8);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==9){
+  dis+="9";
+  if(a=="a")
+   a=9;
+  else{
+   a=getCalc(a,9);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+ if(n==0){
+  dis+="0";
+  if(a=="a")
+   a=0;
+  else{
+   a=getCalc(a,0);
+   dis=a+"";
+  }
+  numval.value=dis;
+ }
+}
+
+function getCalc(a,b){
+ if(op=="*"){
+  op="";
+  return a*b;
+ }
+ else if(op=="+"){
+  op="";
+  return a+b;
+ }
+ else if(op=="-"){
+  op="";
+  return a-b;
+ }
+ else if(op=="/"){
+  op="";
+  return a/b;
+ }
+ else{
+  return a+""+b;
+ }
+}
+
+</script>
+
+<style>
+
+.big{
+ width:300px;
+ height:100px;
+ font-size:25px;
+}
+
+.bigt{
+ width:1220px;
+ height:50px;
+ font-size:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<table>
+
+<tr>
+
+<td colspan=4><input type="text" id="numval" disabled class="bigt"/></td>
+
+</tr>
+
+<tr>
+
+<td><input type="button" value="1" name="one" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="2" name="two" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="3" name="three" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="C" name="clear" onclick="calc(this.value)" class="big"/></td>
+
+</tr>
+
+<tr>
+
+<td><input type="button" value="4" name="four" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="5" name="five" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="6" name="six" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="+" name="plus" onclick="calc(this.value)" class="big"/></td>
+
+</tr>
+
+<tr>
+
+<td><input type="button" value="7" name="seven" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="8" name="eight" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="9" name="nine" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="-" name="minus" onclick="calc(this.value)" class="big"/></td>
+
+</tr>
+
+<tr>
+
+<td><input type="button" value="0" name="zero" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="=" name="equal" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="*" name="star" onclick="calc(this.value)" class="big"/></td>
+<td><input type="button" value="/" name="slash" onclick="calc(this.value)" class="big"/></td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>

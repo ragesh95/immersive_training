@@ -1,0 +1,52 @@
+<html>
+
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+
+<script>
+
+function finddata(){
+ var str=document.getElementById("searchbox");
+ var tags = ["Perl","PHP","Python","Ruby"];
+ var xhttp=new XMLHttpRequest();
+ var proxy = 'https://cors-anywhere.herokuapp.com/';
+ xhttp.open("GET",proxy+"http://clients1.google.com/complete/search?hl=en&output=toolbar&q="+str.value);
+ xhttp.onreadystatechange=function(){
+  if(this.readyState==4&&this.status>=200){
+   var options="";
+   var suggestions=xhttp.responseText;
+   var asplit=suggestions.split("\"");
+   /*for(var i=3;i<asplit.length;i+=2)
+    alert(asplit[i]);*/
+   for(var i=3;i<asplit.length;i+=2)
+    options+="<option value="+asplit[i]+" />";
+   document.getElementById("suggestions").innerHTML=options;
+  }
+ }
+ xhttp.send();
+}
+
+function dogoogle(){
+ location.href="http://google.com/?q="+document.getElementById("searchbox").value;
+}
+
+</script>
+
+</head>
+
+<body>
+
+<input list="suggestions" id="searchbox" onkeyup="finddata()"/>
+<datalist id="suggestions">
+</datalist>
+
+<input type="button" value="search" onclick="dogoogle()"/>
+
+<br>
+
+<gcse:search></gcse:search>
+
+</body>
+
+</html>

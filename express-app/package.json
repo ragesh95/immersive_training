@@ -2,7 +2,7 @@
   "name": "express-app",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "passport_node_acl_example.js",
   "scripts": {
     "start": "nodemon",
     "test": "mocha"
@@ -10,8 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.16.0",
-    "express": "^4.14.1"
+    "body-parser": "^1.16.1",
+    "connect": "^3.5.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "method-override": "^2.3.7",
+    "node-acl": "0.0.2",
+    "passport": "^0.3.2",
+    "passport-session": "^1.0.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",

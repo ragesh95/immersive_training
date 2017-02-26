@@ -6,11 +6,11 @@ var Child1 = require('./components/zomato/restaurants.jsx');
 var Favourites = require('./components/zomato/favourites.jsx');
 var Menu = require("./components/zomato/menu.jsx");
 var Login = require("./components/login.jsx");
-
+var Invite = require("./components/zomato/invite.jsx");
 class MainComponent extends React.Component {
 	constructor() {
 		super();
-		this.state = { menu : ['Home','Favourites','Logout'], active : <Child1 />};
+		this.state = { menu : ['Home','Favourites','Invite','Logout'], active : <Child1 />};
 	}
 
 	onMenuChange(x){
@@ -25,6 +25,12 @@ class MainComponent extends React.Component {
 				active : <Favourites />
 			});
 		}
+		else if(x === "invite") {
+			this.setState({
+				active : <Invite />
+			});
+		}
+
 	}
 
 	render() {
@@ -43,6 +49,7 @@ ReactDOM.render(
                 <Route component={MainComponent}>
 									<Route path="/home" component={Child1}/>
                 	<Route path="/favourites" component={Favourites}/>
+									<Route path="/invite" component={Invite}/>
 								</Route>
   </Router>,document.getElementById('menu')
 );

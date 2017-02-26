@@ -61,6 +61,11 @@ class Menus extends React.Component {
 
           </Menu.Item>
         </Link>
+        <Link to="/invite">
+          <Menu.Item name='invite' active={this.state.activeItem === 'invite'} onClick={this.handleItemClick}>
+
+          </Menu.Item>
+        </Link>
           <Menu.Menu position='right'>
             <Menu.Item>
               <Button color="teal" onClick={this.logOut.bind(this)}>Sign Out</Button>
